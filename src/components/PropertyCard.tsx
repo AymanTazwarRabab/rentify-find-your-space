@@ -1,0 +1,32 @@
+
+import React from 'react';
+
+interface PropertyCardProps {
+  type: string;
+  location: string;
+  rooms: string;
+  rent: string;
+  measurement?: string;
+  bgColor: string;
+}
+
+const PropertyCard: React.FC<PropertyCardProps> = ({ 
+  type, 
+  location, 
+  rooms, 
+  rent, 
+  measurement, 
+  bgColor 
+}) => {
+  return (
+    <div className={`${bgColor} p-6 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow cursor-pointer`}>
+      <h3 className="font-bold text-lg mb-2">{type}</h3>
+      <p className="text-sm mb-1">LOCATION: {location}</p>
+      <p className="text-sm mb-1">TOTAL ROOM: {rooms}</p>
+      {measurement && <p className="text-sm mb-1">MEASUREMENT: {measurement}</p>}
+      <p className="text-sm font-semibold">RENT PER MONTH: {rent}</p>
+    </div>
+  );
+};
+
+export default PropertyCard;
