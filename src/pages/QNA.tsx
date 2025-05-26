@@ -36,46 +36,69 @@ const QNA = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h1>
-          <p className="text-xl text-gray-600">
+    <div className="page-container">
+      {/* Hero Section */}
+      <div className="relative bg-gradient-to-br from-white via-blue-50 to-amber-50 py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-orange-500/10 animate-pulse-glow"></div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="section-header animate-bounce-in">
+            Frequently Asked Questions
+          </h1>
+          <p className="section-subtitle animate-slide-up">
             Find answers to common questions about using RENTIFY
           </p>
+          
+          {/* Floating Elements */}
+          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 right-20 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
         </div>
+      </div>
 
-        <div className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-lg">
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full p-6 text-left focus:outline-none focus:ring-2 focus:ring-yellow-500 rounded-lg"
+      {/* FAQ Section */}
+      <div className="py-20 relative">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-6">
+            {faqs.map((faq, index) => (
+              <div 
+                key={index} 
+                className="card-elegant hover-lift animate-fade-in"
+                style={{animationDelay: `${index * 0.1}s`}}
               >
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold text-gray-900">{faq.question}</h3>
-                  <span className="text-2xl text-yellow-500">
-                    {openFAQ === index ? '−' : '+'}
-                  </span>
-                </div>
-              </button>
-              {openFAQ === index && (
-                <div className="px-6 pb-6">
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
-                </div>
-              )}
-            </div>
-          ))}
+                <button
+                  onClick={() => toggleFAQ(index)}
+                  className="w-full p-8 text-left focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-3xl"
+                >
+                  <div className="flex justify-between items-center">
+                    <h3 className="text-xl font-bold text-gray-900">{faq.question}</h3>
+                    <span className="text-3xl text-gradient-to-r from-amber-500 to-orange-500 font-bold">
+                      {openFAQ === index ? '−' : '+'}
+                    </span>
+                  </div>
+                </button>
+                {openFAQ === index && (
+                  <div className="px-8 pb-8 animate-fade-in">
+                    <p className="text-gray-600 leading-relaxed text-lg">{faq.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
+      </div>
 
-        <div className="bg-white rounded-lg shadow-lg p-8 mt-12 text-center">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">Still have questions?</h2>
-          <p className="text-gray-600 mb-6">
-            Can't find the answer you're looking for? Our support team is here to help.
-          </p>
-          <button className="bg-yellow-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-yellow-600 transition-colors">
-            Contact Support
-          </button>
+      {/* Contact Support Section */}
+      <div className="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="card-elegant p-12 text-center animate-scale-in">
+            <h2 className="text-3xl font-bold text-gray-900 mb-6 gradient-text">Still have questions?</h2>
+            <p className="text-gray-600 mb-8 text-lg">
+              Can't find the answer you're looking for? Our support team is here to help.
+            </p>
+            <button className="btn-primary hover-lift">
+              Contact Support
+            </button>
+          </div>
         </div>
       </div>
     </div>
