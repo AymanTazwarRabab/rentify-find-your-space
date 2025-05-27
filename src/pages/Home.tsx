@@ -114,16 +114,16 @@ const Home = () => {
               <p className="text-gray-600 text-lg">All our properties are thoroughly verified for your safety and peace of mind.</p>
             </div>
             
-            <div className="card-elegant p-8 text-center hover-lift animate-fade-in" style={{animationDelay: '0.2s'}}>
-              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+            <div className="card-elegant p-8 text-center hover-lift animate-fade-in">
+              <div className="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">💰</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Best Prices</h3>
               <p className="text-gray-600 text-lg">Get the most competitive rates in the market with transparent pricing.</p>
             </div>
             
-            <div className="card-elegant p-8 text-center hover-lift animate-fade-in" style={{animationDelay: '0.4s'}}>
-              <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+            <div className="card-elegant p-8 text-center hover-lift animate-fade-in">
+              <div className="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">🤝</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">24/7 Support</h3>
