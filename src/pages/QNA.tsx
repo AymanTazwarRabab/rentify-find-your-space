@@ -38,8 +38,8 @@ const QNA = () => {
   return (
     <div className="page-container">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-white via-blue-50 to-amber-50 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-orange-500/10 animate-pulse-glow"></div>
+      <div className="relative bg-gradient-to-br from-white via-blue-50 to-red-50 py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-pink-500/10 animate-pulse-glow"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="section-header animate-bounce-in">
             Frequently Asked Questions
@@ -49,7 +49,7 @@ const QNA = () => {
           </p>
           
           {/* Floating Elements */}
-          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-red-400 to-pink-400 rounded-full opacity-20 animate-float"></div>
           <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
           <div className="absolute top-1/2 right-20 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
         </div>
@@ -67,11 +67,11 @@ const QNA = () => {
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full p-8 text-left focus:outline-none focus:ring-2 focus:ring-amber-500 rounded-3xl"
+                  className="w-full p-8 text-left focus:outline-none focus:ring-2 focus:ring-red-500 rounded-3xl"
                 >
                   <div className="flex justify-between items-center">
                     <h3 className="text-xl font-bold text-gray-900">{faq.question}</h3>
-                    <span className="text-3xl text-gradient-to-r from-amber-500 to-orange-500 font-bold">
+                    <span className="text-3xl text-gradient-to-r from-red-500 to-pink-500 font-bold">
                       {openFAQ === index ? '−' : '+'}
                     </span>
                   </div>

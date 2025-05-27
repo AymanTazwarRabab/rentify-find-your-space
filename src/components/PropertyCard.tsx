@@ -19,7 +19,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
   bgColor 
 }) => {
   return (
-    <div className={`${bgColor} p-6 rounded-lg text-white shadow-lg hover:shadow-xl transition-shadow cursor-pointer`}>
+    <div className={`${bgColor} p-6 rounded-3xl text-white shadow-2xl hover-lift cursor-pointer transition-all duration-500`}>
       <h3 className="font-bold text-lg mb-2">{type}</h3>
       <p className="text-sm mb-1">LOCATION: {location}</p>
       <p className="text-sm mb-1">TOTAL ROOM: {rooms}</p>

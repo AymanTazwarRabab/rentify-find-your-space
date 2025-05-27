@@ -10,14 +10,14 @@ const Home = () => {
       location: "MIRPUR - 12",
       rooms: "02",
       rent: "12000 BDT",
-      bgColor: "bg-gradient-to-r from-amber-500 to-orange-500"
+      bgColor: "bg-gradient-to-r from-red-500 to-pink-500"
     },
     {
       type: "BACHELOR HOUSE",
       location: "MIRPUR PALLABI",
       rooms: "03",
       rent: "12000 BDT",
-      bgColor: "bg-gradient-to-r from-amber-500 to-orange-500"
+      bgColor: "bg-gradient-to-r from-red-500 to-pink-500"
     },
     {
       type: "COMMERCIAL SPACE",
@@ -25,15 +25,15 @@ const Home = () => {
       rooms: "",
       rent: "50000 BDT",
       measurement: "3000 SQ FT",
-      bgColor: "bg-gradient-to-r from-amber-500 to-orange-500"
+      bgColor: "bg-gradient-to-r from-red-500 to-pink-500"
     }
   ];
 
   return (
     <div className="page-container">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-white via-blue-50 to-amber-50 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-orange-500/10 animate-pulse-glow"></div>
+      <div className="relative bg-gradient-to-br from-white via-blue-50 to-red-50 py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-pink-500/10 animate-pulse-glow"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="section-header animate-bounce-in">
             Welcome to RENTIFY!
@@ -58,7 +58,7 @@ const Home = () => {
           </div>
           
           {/* Floating Elements */}
-          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-red-400 to-pink-400 rounded-full opacity-20 animate-float"></div>
           <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
           <div className="absolute top-1/2 right-20 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
         </div>
@@ -72,7 +72,7 @@ const Home = () => {
             <p className="section-subtitle">Discover the latest additions to our premium collection</p>
           </div>
           
-          <div className="bg-gradient-to-r from-amber-500 to-orange-500 text-white p-8 rounded-3xl shadow-2xl mb-12 animate-fade-in">
+          <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white p-8 rounded-3xl shadow-2xl mb-12 animate-fade-in">
             <h3 className="text-3xl font-bold text-center">Latest Listings</h3>
           </div>
           
@@ -107,7 +107,7 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="card-elegant p-8 text-center hover-lift animate-fade-in">
-              <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">🏠</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Verified Properties</h3>
