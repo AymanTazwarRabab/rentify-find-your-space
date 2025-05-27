@@ -29,30 +29,30 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+    <div className="page-container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header with Logo */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-8 animate-fade-in">
           <div className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/28f45773-a45d-4885-85c3-90a57d69dd0c.png" 
               alt="Rentify Logo" 
               className="h-10 w-auto"
             />
-            <span className="text-2xl font-bold text-gray-900">RENTIFY</span>
+            <span className="text-2xl font-bold gradient-text">RENTIFY</span>
           </div>
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex space-x-8 mb-8 border-b border-gray-200">
+        <div className="flex space-x-8 mb-8 border-b border-gray-200 animate-slide-up">
           {['LISTING', 'MESSAGE', 'MENU'].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`pb-4 px-2 font-semibold text-lg transition-all duration-200 ${
+              className={`pb-4 px-2 font-semibold text-lg transition-all duration-300 hover-lift ${
                 activeTab === tab
-                  ? 'text-amber-600 border-b-3 border-amber-600'
-                  : 'text-gray-500 hover:text-gray-700'
+                  ? 'text-teal-600 border-b-3 border-teal-600'
+                  : 'text-gray-500 hover:text-teal-500'
               }`}
             >
               {tab}
@@ -62,24 +62,29 @@ const Dashboard = () => {
 
         {activeTab === 'LISTING' && (
           <div className="animate-fade-in">
-            <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-white p-6 rounded-2xl mb-8 shadow-lg">
-              <h2 className="text-2xl font-bold">YOUR LISTING</h2>
-              <p className="mt-2 opacity-90">Manage your property listings</p>
+            <div className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white p-8 rounded-3xl mb-8 shadow-2xl animate-scale-in">
+              <h2 className="text-3xl font-bold">YOUR LISTING</h2>
+              <p className="mt-2 opacity-90 text-lg">Manage your property listings with ease</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-              {listings.map((listing) => (
-                <div key={listing.id} className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                  <div className="h-48 bg-gray-200 relative overflow-hidden">
+              {listings.map((listing, index) => (
+                <div 
+                  key={listing.id} 
+                  className="card-elegant overflow-hidden hover-lift animate-fade-in"
+                  style={{animationDelay: `${index * 0.2}s`}}
+                >
+                  <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
                     <img
                       src={listing.image}
                       alt={listing.title}
-                      className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
                   </div>
                   <div className="p-6">
                     <h3 className="font-bold text-xl mb-3 text-gray-900">{listing.title}</h3>
-                    <span className="inline-block bg-amber-100 text-amber-800 text-sm px-4 py-2 rounded-full font-medium">
+                    <span className="inline-block bg-gradient-to-r from-teal-100 to-cyan-100 text-teal-800 text-sm px-4 py-2 rounded-full font-medium border border-teal-200">
                       {listing.category}
                     </span>
                   </div>
@@ -88,14 +93,14 @@ const Dashboard = () => {
             </div>
 
             {/* Filter buttons */}
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-white border-2 border-gray-300 px-6 py-3 rounded-full hover:bg-amber-50 hover:border-amber-300 transition-all duration-200 font-medium">
+            <div className="flex flex-wrap gap-4 animate-slide-up">
+              <button className="btn-secondary hover-lift">
                 A ROOMMATE REQUIRED
               </button>
-              <button className="bg-white border-2 border-gray-300 px-6 py-3 rounded-full hover:bg-amber-50 hover:border-amber-300 transition-all duration-200 font-medium">
+              <button className="btn-secondary hover-lift">
                 FAMILY HOUSE
               </button>
-              <button className="bg-white border-2 border-gray-300 px-6 py-3 rounded-full hover:bg-amber-50 hover:border-amber-300 transition-all duration-200 font-medium">
+              <button className="btn-secondary hover-lift">
                 COMMERCIAL SPACE
               </button>
             </div>
@@ -104,27 +109,35 @@ const Dashboard = () => {
 
         {activeTab === 'MESSAGE' && (
           <div className="text-center py-20 animate-fade-in">
-            <div className="bg-white rounded-2xl shadow-lg p-12 max-w-md mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Messages</h2>
-              <p className="text-gray-600 text-lg">No messages yet</p>
-              <div className="mt-8">
-                <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center">
-                  <span className="text-4xl">💬</span>
-                </div>
+            <div className="card-elegant p-12 max-w-md mx-auto animate-scale-in">
+              <div className="w-24 h-24 bg-gradient-to-r from-teal-100 to-cyan-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <span className="text-4xl">💬</span>
               </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 gradient-text">Messages</h2>
+              <p className="text-gray-600 text-lg mb-6">No messages yet</p>
+              <p className="text-sm text-gray-500">Your conversations with property owners and tenants will appear here.</p>
             </div>
           </div>
         )}
 
         {activeTab === 'MENU' && (
           <div className="text-center py-20 animate-fade-in">
-            <div className="bg-white rounded-2xl shadow-lg p-12 max-w-md mx-auto">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Menu</h2>
-              <p className="text-gray-600 text-lg">Menu options will appear here</p>
-              <div className="mt-8">
-                <div className="w-24 h-24 bg-gray-100 rounded-full mx-auto flex items-center justify-center">
-                  <span className="text-4xl">⚙️</span>
-                </div>
+            <div className="card-elegant p-12 max-w-md mx-auto animate-scale-in">
+              <div className="w-24 h-24 bg-gradient-to-r from-teal-100 to-cyan-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                <span className="text-4xl">⚙️</span>
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4 gradient-text">Settings & Menu</h2>
+              <p className="text-gray-600 text-lg mb-6">Account settings and preferences</p>
+              <div className="space-y-3">
+                <button className="btn-secondary w-full hover-lift">
+                  Profile Settings
+                </button>
+                <button className="btn-secondary w-full hover-lift">
+                  Notification Preferences
+                </button>
+                <button className="btn-secondary w-full hover-lift">
+                  Account Management
+                </button>
               </div>
             </div>
           </div>
