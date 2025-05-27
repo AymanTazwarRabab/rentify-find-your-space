@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl w-full">
         <div className="bg-white rounded-2xl shadow-2xl p-8 border border-gray-100">
           <div className="text-center mb-8">
@@ -76,7 +76,7 @@ const Login = () => {
                 onClick={() => setAccountType('tenant')}
                 className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all duration-200 ${
                   accountType === 'tenant'
-                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-teal-500 to-cyan-500 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -87,7 +87,7 @@ const Login = () => {
                 onClick={() => setAccountType('owner')}
                 className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all duration-200 ${
                   accountType === 'owner'
-                    ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -105,7 +105,7 @@ const Login = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all duration-200"
                   placeholder="Enter your email"
                   required
                 />
@@ -119,7 +119,7 @@ const Login = () => {
                   type="tel"
                   value={number}
                   onChange={(e) => setNumber(e.target.value)}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all duration-200"
                   placeholder="Enter your phone number"
                   required
                 />
@@ -134,7 +134,7 @@ const Login = () => {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all duration-200"
                 placeholder="Enter your password"
                 required
               />
@@ -149,7 +149,7 @@ const Login = () => {
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-amber-500 focus:border-transparent outline-none transition-all duration-200"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all duration-200"
                 placeholder={accountType === 'tenant' ? "Enter your preferred location" : "Enter your property location"}
                 required
               />
@@ -171,7 +171,7 @@ const Login = () => {
                         onClick={() => handleServiceToggle(service)}
                         className={`p-3 rounded-xl border-2 text-sm font-medium transition-all duration-200 ${
                           selectedServices.includes(service)
-                            ? 'bg-blue-50 border-blue-500 text-blue-700'
+                            ? 'bg-teal-50 border-teal-500 text-teal-700'
                             : 'bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100'
                         }`}
                       >
@@ -189,7 +189,7 @@ const Login = () => {
                   <select
                     value={budget}
                     onChange={(e) => setBudget(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all duration-200"
                   >
                     <option value="">Select budget range</option>
                     <option value="0-500">$0 - $500</option>
@@ -213,7 +213,7 @@ const Login = () => {
                   <select
                     value={propertyType}
                     onChange={(e) => setPropertyType(e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent outline-none transition-all duration-200"
                   >
                     <option value="">Select property type</option>
                     {propertyTypes.map((type) => (
@@ -223,9 +223,9 @@ const Login = () => {
                 </div>
 
                 {/* Additional Owner Info */}
-                <div className="bg-purple-50 rounded-xl p-4 border border-purple-200">
-                  <h4 className="font-medium text-purple-900 mb-2">Property Owner Benefits</h4>
-                  <ul className="text-sm text-purple-700 space-y-1">
+                <div className="bg-emerald-50 rounded-xl p-4 border border-emerald-200">
+                  <h4 className="font-medium text-emerald-900 mb-2">Property Owner Benefits</h4>
+                  <ul className="text-sm text-emerald-700 space-y-1">
                     <li>• List unlimited properties</li>
                     <li>• Advanced tenant screening</li>
                     <li>• Rent collection management</li>
@@ -236,17 +236,17 @@ const Login = () => {
             )}
             
             <div className="text-right">
-              <Link to="/forgot-password" className="text-sm text-amber-600 hover:text-amber-800 transition-colors duration-200">
+              <Link to="/forgot-password" className="text-sm text-teal-600 hover:text-teal-800 transition-colors duration-200">
                 Forgot Password?
               </Link>
             </div>
             
             <button
               type="submit"
-              className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${
+              className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover-lift ${
                 accountType === 'tenant'
-                  ? 'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white'
-                  : 'bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white'
+                  ? 'bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white'
+                  : 'bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white'
               }`}
             >
               Sign In as {accountType === 'tenant' ? 'Tenant' : 'Property Owner'}
@@ -255,7 +255,7 @@ const Login = () => {
           
           <p className="text-center text-sm text-gray-600 mt-6">
             Don't have an account?{' '}
-            <Link to="/register" className="text-amber-600 hover:text-amber-800 font-medium transition-colors duration-200">
+            <Link to="/register" className="text-teal-600 hover:text-teal-800 font-medium transition-colors duration-200">
               Create Account
             </Link>
           </p>

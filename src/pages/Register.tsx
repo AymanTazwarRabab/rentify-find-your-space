@@ -31,7 +31,7 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-2xl font-bold text-center text-gray-900 mb-8">REGISTER</h2>
@@ -44,7 +44,7 @@ const Register = () => {
                 placeholder="ENTER YOUR NAME"
                 value={formData.name}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
                 required
               />
             </div>
@@ -56,7 +56,7 @@ const Register = () => {
                 placeholder="ENTER YOUR NUMBER"
                 value={formData.number}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
                 required
               />
             </div>
@@ -68,7 +68,7 @@ const Register = () => {
                 placeholder="ENTER YOUR EMAIL"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
                 required
               />
             </div>
@@ -80,7 +80,7 @@ const Register = () => {
                 placeholder="YOUR LOCATION"
                 value={formData.location}
                 onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none"
+                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
                 required
               />
             </div>
@@ -92,7 +92,7 @@ const Register = () => {
                   name="userType"
                   value={formData.userType}
                   onChange={handleInputChange}
-                  className="px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none"
+                  className="px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
                 >
                   <option value="Tenant">Tenant</option>
                   <option value="House owner">House owner</option>
@@ -105,13 +105,13 @@ const Register = () => {
               <div className="flex space-x-2">
                 <button
                   type="button"
-                  className="w-8 h-8 border-2 border-dashed border-gray-300 rounded flex items-center justify-center text-gray-400 hover:border-yellow-500 transition-colors"
+                  className="w-8 h-8 border-2 border-dashed border-gray-300 rounded flex items-center justify-center text-gray-400 hover:border-teal-500 transition-colors"
                 >
                   +
                 </button>
                 <button
                   type="button"
-                  className="w-8 h-8 border-2 border-dashed border-gray-300 rounded flex items-center justify-center text-gray-400 hover:border-yellow-500 transition-colors"
+                  className="w-8 h-8 border-2 border-dashed border-gray-300 rounded flex items-center justify-center text-gray-400 hover:border-teal-500 transition-colors"
                 >
                   +
                 </button>
@@ -122,7 +122,7 @@ const Register = () => {
               <button
                 type="button"
                 onClick={handleGetOTP}
-                className="w-full bg-yellow-500 text-white py-3 rounded-full font-semibold hover:bg-yellow-600 transition-colors"
+                className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover-lift"
               >
                 Get OTP
               </button>
@@ -134,12 +134,12 @@ const Register = () => {
                   placeholder="Paste your OTP"
                   value={formData.otp}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-yellow-500 focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
                   required
                 />
                 <button
                   type="submit"
-                  className="w-full bg-yellow-500 text-white py-3 rounded-full font-semibold hover:bg-yellow-600 transition-colors"
+                  className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover-lift"
                 >
                   Register
                 </button>
@@ -149,7 +149,7 @@ const Register = () => {
           
           <p className="text-center text-sm text-gray-600 mt-6">
             Already have an account?{' '}
-            <Link to="/login" className="text-blue-600 hover:text-blue-800 font-medium">
+            <Link to="/login" className="text-teal-600 hover:text-teal-800 font-medium">
               Login
             </Link>
           </p>

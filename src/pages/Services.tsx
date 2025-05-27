@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { MapPin, Upload, Home } from 'lucide-react';
 
@@ -15,12 +14,12 @@ const Services = () => {
   });
 
   const propertyTypes = [
-    { id: 'family', label: 'FAMILY HOUSE', color: 'bg-gradient-to-r from-amber-500 to-orange-500' },
-    { id: 'apartment', label: 'APARTMENT', color: 'bg-gradient-to-r from-amber-500 to-orange-500' },
-    { id: 'bachelor', label: 'BACHELOR APARTMENT', color: 'bg-gradient-to-r from-amber-500 to-orange-500' },
-    { id: 'bachelor-room', label: 'BACHELOR ROOM', color: 'bg-gradient-to-r from-amber-500 to-orange-500' },
-    { id: 'roommate', label: 'ROOMMATE', color: 'bg-gradient-to-r from-amber-500 to-orange-500' },
-    { id: 'commercial', label: 'COMMERCIAL SPACE', color: 'bg-gradient-to-r from-amber-500 to-orange-500' }
+    { id: 'family', label: 'FAMILY HOUSE', color: 'bg-gradient-to-r from-teal-500 to-cyan-500' },
+    { id: 'apartment', label: 'APARTMENT', color: 'bg-gradient-to-r from-teal-500 to-cyan-500' },
+    { id: 'bachelor', label: 'BACHELOR APARTMENT', color: 'bg-gradient-to-r from-teal-500 to-cyan-500' },
+    { id: 'bachelor-room', label: 'BACHELOR ROOM', color: 'bg-gradient-to-r from-teal-500 to-cyan-500' },
+    { id: 'roommate', label: 'ROOMMATE', color: 'bg-gradient-to-r from-teal-500 to-cyan-500' },
+    { id: 'commercial', label: 'COMMERCIAL SPACE', color: 'bg-gradient-to-r from-teal-500 to-cyan-500' }
   ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -46,7 +45,7 @@ const Services = () => {
           <div className="animate-slide-up">
             <div className="card-elegant p-8">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
-                <Home className="mr-3 text-amber-500" />
+                <Home className="mr-3 text-teal-500" />
                 WHICH BEST DESCRIBES YOUR PLACE?
               </h2>
               
@@ -56,8 +55,8 @@ const Services = () => {
                     key={type.id}
                     onClick={() => setSelectedPropertyType(type.id)}
                     className={`${type.color} ${
-                      selectedPropertyType === type.id ? 'ring-4 ring-amber-300 scale-105' : ''
-                    } text-white p-6 rounded-2xl font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl`}
+                      selectedPropertyType === type.id ? 'ring-4 ring-teal-300 scale-105' : ''
+                    } text-white p-6 rounded-2xl font-bold hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover-lift`}
                   >
                     {type.label}
                   </button>
@@ -65,7 +64,7 @@ const Services = () => {
               </div>
 
               <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-                <MapPin className="mr-3 text-amber-500" />
+                <MapPin className="mr-3 text-teal-500" />
                 WHERE IS YOUR PLACE LOCATED?
               </h3>
               
@@ -83,7 +82,7 @@ const Services = () => {
               {/* Enhanced Map Placeholder */}
               <div className="bg-gradient-to-br from-gray-100 to-gray-200 h-64 rounded-2xl flex items-center justify-center shadow-inner animate-pulse-glow">
                 <div className="text-center">
-                  <MapPin className="w-16 h-16 text-amber-500 mx-auto mb-4" />
+                  <MapPin className="w-16 h-16 text-teal-500 mx-auto mb-4" />
                   <span className="text-xl font-semibold text-gray-600">Interactive Map View</span>
                 </div>
               </div>
@@ -167,15 +166,15 @@ const Services = () => {
 
                 <div>
                   <h4 className="font-bold text-xl text-gray-800 mb-6 flex items-center">
-                    <Upload className="mr-3 text-amber-500" />
+                    <Upload className="mr-3 text-teal-500" />
                     ADD PHOTOS OF YOUR PLACE
                   </h4>
                   <div className="flex space-x-6">
-                    <div className="w-32 h-32 border-3 border-dashed border-amber-300 rounded-2xl flex items-center justify-center cursor-pointer hover:border-amber-500 hover:bg-amber-50 transition-all duration-300 hover-lift">
-                      <Upload className="w-8 h-8 text-amber-400" />
+                    <div className="w-32 h-32 border-3 border-dashed border-teal-300 rounded-2xl flex items-center justify-center cursor-pointer hover:border-teal-500 hover:bg-teal-50 transition-all duration-300 hover-lift">
+                      <Upload className="w-8 h-8 text-teal-400" />
                     </div>
-                    <div className="w-32 h-32 border-3 border-dashed border-amber-300 rounded-2xl flex items-center justify-center cursor-pointer hover:border-amber-500 hover:bg-amber-50 transition-all duration-300 hover-lift">
-                      <Upload className="w-8 h-8 text-amber-400" />
+                    <div className="w-32 h-32 border-3 border-dashed border-teal-300 rounded-2xl flex items-center justify-center cursor-pointer hover:border-teal-500 hover:bg-teal-50 transition-all duration-300 hover-lift">
+                      <Upload className="w-8 h-8 text-teal-400" />
                     </div>
                   </div>
                 </div>
