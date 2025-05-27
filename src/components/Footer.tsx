@@ -21,23 +21,23 @@ const Footer = () => {
           </div>
           
           <div className="flex space-x-8 animate-fade-in">
-            <Link to="/terms" className="text-lg hover:text-amber-400 transition-all duration-300 hover:scale-110 font-medium">
+            <Link to="/terms" className="text-lg hover:text-teal-400 transition-all duration-300 hover:scale-110 font-medium">
               TERMS & CONDITIONS
             </Link>
-            <Link to="/privacy" className="text-lg hover:text-amber-400 transition-all duration-300 hover:scale-110 font-medium">
+            <Link to="/privacy" className="text-lg hover:text-teal-400 transition-all duration-300 hover:scale-110 font-medium">
               PRIVACY POLICY
             </Link>
           </div>
         </div>
         
         <div className="flex justify-center space-x-6 mt-8 pt-8 border-t border-gray-700 animate-bounce-in">
-          <div className="w-14 h-14 bg-gradient-to-r from-pink-500 to-rose-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-125 transition-all duration-300 shadow-2xl hover:shadow-pink-500/25">
+          <div className="w-14 h-14 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-125 transition-all duration-300 shadow-2xl hover:shadow-teal-500/25">
             <span className="text-white text-lg font-bold">i</span>
           </div>
-          <div className="w-14 h-14 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center cursor-pointer hover:scale-125 transition-all duration-300 shadow-2xl hover:shadow-blue-500/25">
+          <div className="w-14 h-14 bg-gradient-to-r from-cyan-600 to-blue-700 rounded-full flex items-center justify-center cursor-pointer hover:scale-125 transition-all duration-300 shadow-2xl hover:shadow-cyan-500/25">
             <span className="text-white text-lg font-bold">f</span>
           </div>
-          <div className="w-14 h-14 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center cursor-pointer hover:scale-125 transition-all duration-300 shadow-2xl hover:shadow-green-500/25">
+          <div className="w-14 h-14 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center cursor-pointer hover:scale-125 transition-all duration-300 shadow-2xl hover:shadow-emerald-500/25">
             <span className="text-white text-lg font-bold">w</span>
           </div>
         </div>

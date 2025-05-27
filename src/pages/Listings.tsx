@@ -31,8 +31,8 @@ const Listings = () => {
   return (
     <div className="page-container">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-white via-blue-50 to-red-50 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-pink-500/10 animate-pulse-glow"></div>
+      <div className="relative bg-gradient-to-br from-white via-teal-50 to-cyan-50 py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 animate-pulse-glow"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="section-header animate-bounce-in">
             FIND YOUR PLACE
@@ -45,9 +45,9 @@ const Listings = () => {
           </p>
           
           {/* Floating Elements */}
-          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-red-400 to-pink-400 rounded-full opacity-20 animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
-          <div className="absolute top-1/2 right-20 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 right-20 w-12 h-12 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
         </div>
       </div>
 
@@ -62,7 +62,7 @@ const Listings = () => {
                 onClick={() => setActiveTab(tab)}
                 className={`pb-4 px-2 font-semibold transition-all duration-300 hover-lift ${
                   activeTab === tab
-                    ? 'text-red-600 border-b-2 border-red-600'
+                    ? 'text-teal-600 border-b-2 border-teal-600'
                     : 'text-gray-500 hover:text-gray-700'
                 }`}
               >
@@ -73,7 +73,7 @@ const Listings = () => {
 
           {activeTab === 'LISTING' && (
             <div className="animate-fade-in">
-              <div className="bg-gradient-to-r from-red-500 to-pink-500 text-white p-8 rounded-3xl shadow-2xl mb-12 animate-scale-in">
+              <div className="bg-gradient-to-r from-teal-500 to-cyan-500 text-white p-8 rounded-3xl shadow-2xl mb-12 animate-scale-in">
                 <h2 className="text-3xl font-bold text-center">YOUR LISTING</h2>
               </div>
 
@@ -93,7 +93,7 @@ const Listings = () => {
                     </div>
                     <div className="p-6">
                       <h3 className="font-bold text-xl mb-4 text-gray-900">{listing.title}</h3>
-                      <span className="inline-block bg-gradient-to-r from-red-100 to-pink-100 text-red-800 text-sm px-4 py-2 rounded-full font-medium">
+                      <span className="inline-block bg-gradient-to-r from-teal-100 to-cyan-100 text-teal-800 text-sm px-4 py-2 rounded-full font-medium">
                         {listing.category}
                       </span>
                     </div>
@@ -103,13 +103,13 @@ const Listings = () => {
 
               {/* Filter buttons */}
               <div className="flex flex-wrap gap-4 animate-fade-in" style={{animationDelay: '0.6s'}}>
-                <button className="bg-white/80 backdrop-blur-lg border-2 border-red-200 px-6 py-3 rounded-2xl hover:bg-red-50 hover:border-red-400 transition-all duration-300 font-semibold shadow-lg hover-lift">
+                <button className="bg-white/80 backdrop-blur-lg border-2 border-teal-200 px-6 py-3 rounded-2xl hover:bg-teal-50 hover:border-teal-400 transition-all duration-300 font-semibold shadow-lg hover-lift">
                   A ROOMATE REQUIRED
                 </button>
-                <button className="bg-white/80 backdrop-blur-lg border-2 border-red-200 px-6 py-3 rounded-2xl hover:bg-red-50 hover:border-red-400 transition-all duration-300 font-semibold shadow-lg hover-lift">
+                <button className="bg-white/80 backdrop-blur-lg border-2 border-teal-200 px-6 py-3 rounded-2xl hover:bg-teal-50 hover:border-teal-400 transition-all duration-300 font-semibold shadow-lg hover-lift">
                   FAMILY HOUSE
                 </button>
-                <button className="bg-white/80 backdrop-blur-lg border-2 border-red-200 px-6 py-3 rounded-2xl hover:bg-red-50 hover:border-red-400 transition-all duration-300 font-semibold shadow-lg hover-lift">
+                <button className="bg-white/80 backdrop-blur-lg border-2 border-teal-200 px-6 py-3 rounded-2xl hover:bg-teal-50 hover:border-teal-400 transition-all duration-300 font-semibold shadow-lg hover-lift">
                   COMMERCIAL SPACE
                 </button>
               </div>

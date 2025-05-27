@@ -23,8 +23,8 @@ const Contact = () => {
   return (
     <div className="page-container">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-white via-blue-50 to-red-50 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-pink-500/10 animate-pulse-glow"></div>
+      <div className="relative bg-gradient-to-br from-white via-teal-50 to-cyan-50 py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 animate-pulse-glow"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="section-header animate-bounce-in">
             CONTACT US
@@ -37,9 +37,9 @@ const Contact = () => {
           </p>
           
           {/* Floating Elements */}
-          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-red-400 to-pink-400 rounded-full opacity-20 animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
-          <div className="absolute top-1/2 right-20 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 right-20 w-12 h-12 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
         </div>
       </div>
 
@@ -53,7 +53,7 @@ const Contact = () => {
                 className="card-elegant p-8 text-center hover-lift animate-fade-in cursor-pointer"
                 style={{animationDelay: `${index * 0.2}s`}}
               >
-                <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                <div className="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-2xl mx-auto mb-6 flex items-center justify-center">
                   <span className="text-3xl">{option.icon}</span>
                 </div>
                 <h3 className="font-bold text-xl text-gray-900 mb-2">{option.title}</h3>
@@ -65,7 +65,7 @@ const Contact = () => {
       </div>
 
       {/* Contact Form Section */}
-      <div className="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div className="py-20 bg-gradient-to-r from-teal-50 to-cyan-50">
         <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
           <div className="card-elegant p-8 animate-scale-in">
             <h3 className="text-2xl font-bold text-center text-gray-900 mb-8 gradient-text">Send us a message</h3>

@@ -5,8 +5,8 @@ const About = () => {
   return (
     <div className="page-container">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-white via-blue-50 to-red-50 py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-pink-500/10 animate-pulse-glow"></div>
+      <div className="relative bg-gradient-to-br from-white via-teal-50 to-cyan-50 py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-teal-500/10 to-cyan-500/10 animate-pulse-glow"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="section-header animate-bounce-in">
             About RENTIFY
@@ -17,9 +17,9 @@ const About = () => {
           </p>
           
           {/* Floating Elements */}
-          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-red-400 to-pink-400 rounded-full opacity-20 animate-float"></div>
-          <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
-          <div className="absolute top-1/2 right-20 w-12 h-12 bg-gradient-to-r from-green-400 to-blue-400 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
+          <div className="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-16 h-16 bg-gradient-to-r from-cyan-400 to-emerald-400 rounded-full opacity-20 animate-float" style={{animationDelay: '1s'}}></div>
+          <div className="absolute top-1/2 right-20 w-12 h-12 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-full opacity-20 animate-float" style={{animationDelay: '2s'}}></div>
         </div>
       </div>
 
@@ -28,7 +28,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <div className="card-elegant p-8 text-center hover-lift animate-fade-in">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-500 to-pink-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">🏠</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Quality Homes</h3>
@@ -38,7 +38,7 @@ const About = () => {
             </div>
 
             <div className="card-elegant p-8 text-center hover-lift animate-fade-in" style={{animationDelay: '0.2s'}}>
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-cyan-500 to-emerald-500 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">🤝</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Trusted Community</h3>
@@ -48,7 +48,7 @@ const About = () => {
             </div>
 
             <div className="card-elegant p-8 text-center hover-lift animate-fade-in" style={{animationDelay: '0.4s'}}>
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-500 rounded-full mx-auto mb-6 flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mx-auto mb-6 flex items-center justify-center">
                 <span className="text-white text-2xl font-bold">💰</span>
               </div>
               <h3 className="text-2xl font-bold mb-4 text-gray-900">Best Prices</h3>
@@ -61,7 +61,7 @@ const About = () => {
       </div>
 
       {/* Mission Section */}
-      <div className="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div className="py-20 bg-gradient-to-r from-teal-50 to-cyan-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="card-elegant p-12 text-center animate-scale-in">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 gradient-text">Our Mission</h2>

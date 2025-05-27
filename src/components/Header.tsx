@@ -23,25 +23,25 @@ const Header = () => {
           <nav className="hidden md:flex space-x-8">
             <Link 
               to="/" 
-              className={`${isActive('/') ? 'text-amber-600 border-b-2 border-amber-600' : 'text-gray-700 hover:text-amber-600'} px-4 py-3 transition-all duration-300 font-semibold text-lg hover:scale-105`}
+              className={`${isActive('/') ? 'text-teal-600 border-b-2 border-teal-600' : 'text-gray-700 hover:text-teal-600'} px-4 py-3 transition-all duration-300 font-semibold text-lg hover:scale-105`}
             >
               HOME
             </Link>
             <Link 
               to="/about" 
-              className={`${isActive('/about') ? 'text-amber-600 border-b-2 border-amber-600' : 'text-gray-700 hover:text-amber-600'} px-4 py-3 transition-all duration-300 font-semibold text-lg hover:scale-105`}
+              className={`${isActive('/about') ? 'text-teal-600 border-b-2 border-teal-600' : 'text-gray-700 hover:text-teal-600'} px-4 py-3 transition-all duration-300 font-semibold text-lg hover:scale-105`}
             >
               ABOUT US
             </Link>
             <Link 
               to="/qna" 
-              className={`${isActive('/qna') ? 'text-amber-600 border-b-2 border-amber-600' : 'text-gray-700 hover:text-amber-600'} px-4 py-3 transition-all duration-300 font-semibold text-lg hover:scale-105`}
+              className={`${isActive('/qna') ? 'text-teal-600 border-b-2 border-teal-600' : 'text-gray-700 hover:text-teal-600'} px-4 py-3 transition-all duration-300 font-semibold text-lg hover:scale-105`}
             >
               QNA
             </Link>
             <Link 
               to="/contact" 
-              className={`${isActive('/contact') ? 'text-amber-600 border-b-2 border-amber-600' : 'text-gray-700 hover:text-amber-600'} px-4 py-3 transition-all duration-300 font-semibold text-lg hover:scale-105`}
+              className={`${isActive('/contact') ? 'text-teal-600 border-b-2 border-teal-600' : 'text-gray-700 hover:text-teal-600'} px-4 py-3 transition-all duration-300 font-semibold text-lg hover:scale-105`}
             >
               CONTACT
             </Link>
@@ -49,7 +49,7 @@ const Header = () => {
 
           <Link 
             to="/login" 
-            className="bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white px-8 py-3 rounded-2xl hover:from-amber-600 hover:via-orange-600 hover:to-red-600 transition-all duration-500 transform hover:scale-105 shadow-2xl font-semibold hover-lift"
+            className="bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 text-white px-8 py-3 rounded-2xl hover:from-teal-600 hover:via-cyan-600 hover:to-emerald-600 transition-all duration-500 transform hover:scale-105 shadow-2xl font-semibold hover-lift"
           >
             LOGIN / REGISTER
           </Link>
