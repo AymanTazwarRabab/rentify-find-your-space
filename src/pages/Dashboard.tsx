@@ -31,18 +31,6 @@ const Dashboard = () => {
   return (
     <div className="page-container">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Header with Logo */}
-        <div className="flex items-center justify-between mb-8 animate-fade-in">
-          <div className="flex items-center space-x-3">
-            <img 
-              src="/lovable-uploads/28f45773-a45d-4885-85c3-90a57d69dd0c.png" 
-              alt="Rentify Logo" 
-              className="h-10 w-auto"
-            />
-            <span className="text-2xl font-bold gradient-text">RENTIFY</span>
-          </div>
-        </div>
-
         {/* Tab Navigation */}
         <div className="flex space-x-8 mb-8 border-b border-gray-200 animate-slide-up">
           {['LISTING', 'MESSAGE', 'MENU'].map((tab) => (
