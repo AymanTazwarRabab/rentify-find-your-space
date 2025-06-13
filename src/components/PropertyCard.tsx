@@ -19,9 +19,15 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
   bgColor 
 }) => {
   return (
-    <div className="relative z-10 overflow-hidden rounded-3xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 cursor-pointer">
-      <div className="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-500"></div>
-      <div className="relative z-10 p-6 text-white">
+    <div className="relative rounded-3xl shadow-xl transform transition-all duration-500 cursor-pointer hover:scale-105 hover:shadow-2xl overflow-hidden">
+      <div 
+        className="absolute inset-0 bg-gradient-to-r from-teal-500 to-cyan-500"
+        style={{ zIndex: 1 }}
+      ></div>
+      <div 
+        className="relative p-6 text-white"
+        style={{ zIndex: 2 }}
+      >
         <h3 className="font-bold text-lg mb-2">{type}</h3>
         <p className="text-sm mb-1">LOCATION: {location}</p>
         <p className="text-sm mb-1">TOTAL ROOM: {rooms}</p>

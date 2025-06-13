@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropertyCard from '../components/PropertyCard';
@@ -80,7 +79,7 @@ const Home = () => {
             {properties.map((property, index) => (
               <div 
                 key={index} 
-                className="animate-scale-in hover-lift"
+                className="animate-scale-in"
                 style={{animationDelay: `${index * 0.2}s`}}
               >
                 <PropertyCard
