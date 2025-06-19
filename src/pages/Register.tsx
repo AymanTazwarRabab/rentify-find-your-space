@@ -23,9 +23,20 @@ const Register = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Enhanced validation
+    if (!validateEmail(formData.email)) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
     if (formData.password !== formData.confirmPassword) {
       toast.error('Passwords do not match');
       return;
@@ -36,36 +47,65 @@ const Register = () => {
       return;
     }
 
+    if (!formData.name.trim()) {
+      toast.error('Name is required');
+      return;
+    }
+
+    if (!formData.number.trim()) {
+      toast.error('Phone number is required');
+      return;
+    }
+
+    if (!formData.location.trim()) {
+      toast.error('Location is required');
+      return;
+    }
+
     setLoading(true);
     
     try {
       const userData = {
-        name: formData.name,
-        phone: formData.number,
-        location: formData.location,
+        name: formData.name.trim(),
+        phone: formData.number.trim(),
+        location: formData.location.trim(),
         user_type: formData.userType
       };
 
-      const { data, error } = await signUp(formData.email, formData.password, userData);
+      console.log('Attempting to register with:', { 
+        email: formData.email, 
+        userData 
+      });
+
+      const { data, error } = await signUp(formData.email.trim(), formData.password, userData);
       
       if (error) {
-        toast.error(error.message);
+        console.error('Registration error:', error);
+        
+        // Handle specific error messages
+        if (error.message.includes('email_address_invalid')) {
+          toast.error('Please enter a valid email address');
+        } else if (error.message.includes('weak_password')) {
+          toast.error('Password is too weak. Please use a stronger password.');
+        } else if (error.message.includes('user_already_exists')) {
+          toast.error('An account with this email already exists');
+        } else {
+          toast.error(error.message);
+        }
         return;
       }
 
       if (data.user) {
-        toast.success('Account created successfully!');
+        toast.success('Account created successfully! Please check your email for verification.');
         
-        // Redirect based on user type
-        if (formData.userType === 'Tenant') {
-          navigate('/tenant-dashboard');
-        } else {
-          navigate('/owner-dashboard');
-        }
+        // Don't redirect immediately, let user verify email first
+        // Instead, show a message about email verification
+        toast.info('Please verify your email before logging in');
+        navigate('/login');
       }
     } catch (error: any) {
-      toast.error('Registration failed. Please try again.');
       console.error('Registration error:', error);
+      toast.error('Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
