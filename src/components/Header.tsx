@@ -1,11 +1,22 @@
 
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { LogOut } from 'lucide-react';
 
 const Header = () => {
   const location = useLocation();
+  const { user, signOut } = useAuth();
 
   const isActive = (path: string) => location.pathname === path;
+
+  const handleLogout = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  };
 
   return (
     <header className="bg-white/90 backdrop-blur-xl shadow-lg border-b border-white/20 sticky top-0 z-50 animate-fade-in">
@@ -47,12 +58,22 @@ const Header = () => {
             </Link>
           </nav>
 
-          <Link 
-            to="/login" 
-            className="bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 text-white px-8 py-3 rounded-2xl hover:from-teal-600 hover:via-cyan-600 hover:to-emerald-600 transition-all duration-500 transform hover:scale-105 shadow-2xl font-semibold hover-lift"
-          >
-            LOGIN / REGISTER
-          </Link>
+          {user ? (
+            <button 
+              onClick={handleLogout}
+              className="flex items-center space-x-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-6 py-3 rounded-2xl hover:from-red-600 hover:to-red-700 transition-all duration-500 transform hover:scale-105 shadow-2xl font-semibold hover-lift"
+            >
+              <LogOut className="w-4 h-4" />
+              <span>LOGOUT</span>
+            </button>
+          ) : (
+            <Link 
+              to="/login" 
+              className="bg-gradient-to-r from-teal-500 via-cyan-500 to-emerald-500 text-white px-8 py-3 rounded-2xl hover:from-teal-600 hover:via-cyan-600 hover:to-emerald-600 transition-all duration-500 transform hover:scale-105 shadow-2xl font-semibold hover-lift"
+            >
+              LOGIN / REGISTER
+            </Link>
+          )}
         </div>
       </div>
     </header>

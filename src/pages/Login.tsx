@@ -28,14 +28,21 @@ const Login = () => {
         
         if (profile?.user_type === 'Tenant') {
           navigate('/tenant-dashboard');
-        } else {
+        } else if (profile?.user_type === 'House owner') {
           navigate('/owner-dashboard');
+        } else {
+          // Fallback - redirect based on active tab if profile doesn't have user_type
+          if (activeTab === 'tenant') {
+            navigate('/tenant-dashboard');
+          } else {
+            navigate('/owner-dashboard');
+          }
         }
       };
       
       getUserProfile();
     }
-  }, [user, navigate]);
+  }, [user, navigate, activeTab]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -47,7 +54,7 @@ const Login = () => {
     setLoading(true);
     
     try {
-      console.log('Attempting to login with:', formData.email);
+      console.log('Attempting to login with:', formData.email, 'as', activeTab);
       
       const { data, error } = await signIn(formData.email, formData.password);
       
@@ -75,10 +82,21 @@ const Login = () => {
           .eq('id', data.user.id)
           .single();
         
+        console.log('User profile:', profile);
+        
+        // Redirect based on profile user_type or active tab
         if (profile?.user_type === 'Tenant') {
           navigate('/tenant-dashboard');
-        } else {
+        } else if (profile?.user_type === 'House owner') {
           navigate('/owner-dashboard');
+        } else {
+          // If no profile user_type, use the active tab
+          console.log('No user_type in profile, using active tab:', activeTab);
+          if (activeTab === 'tenant') {
+            navigate('/tenant-dashboard');
+          } else {
+            navigate('/owner-dashboard');
+          }
         }
       }
     } catch (error: any) {

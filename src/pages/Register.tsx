@@ -98,6 +98,9 @@ const Register = () => {
       if (data.user) {
         toast.success('Account created successfully! Please check your email for verification.');
         
+        // Store the selected user type for later use during login
+        localStorage.setItem('pendingUserType', formData.userType);
+        
         // Don't redirect immediately, let user verify email first
         // Instead, show a message about email verification
         toast.info('Please verify your email before logging in');
