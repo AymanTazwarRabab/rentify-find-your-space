@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropertyCard from '../components/PropertyCard';
@@ -8,21 +9,21 @@ const Home = () => {
       type: "FAMILY HOUSE",
       location: "MIRPUR - 12",
       rooms: "02",
-      rent: "12000 BDT",
+      rent: "12000 ৳",
       bgColor: "bg-gradient-to-r from-teal-500 to-cyan-500"
     },
     {
       type: "BACHELOR HOUSE",
       location: "MIRPUR PALLABI",
       rooms: "03",
-      rent: "12000 BDT",
+      rent: "8000 ৳",
       bgColor: "bg-gradient-to-r from-teal-500 to-cyan-500"
     },
     {
       type: "COMMERCIAL SPACE",
       location: "MIRPUR - 12",
       rooms: "",
-      rent: "50000 BDT",
+      rent: "50000 ৳",
       measurement: "3000 SQ FT",
       bgColor: "bg-gradient-to-r from-teal-500 to-cyan-500"
     }

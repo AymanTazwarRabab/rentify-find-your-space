@@ -15,6 +15,8 @@ import Listings from "./pages/Listings";
 import About from "./pages/About";
 import QNA from "./pages/QNA";
 import Dashboard from "./pages/Dashboard";
+import TenantDashboard from "./pages/TenantDashboard";
+import OwnerDashboard from "./pages/OwnerDashboard";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +40,8 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/qna" element={<QNA />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/tenant-dashboard" element={<TenantDashboard />} />
+              <Route path="/owner-dashboard" element={<OwnerDashboard />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>

@@ -27,7 +27,13 @@ const Register = () => {
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Registration data:', formData);
-    navigate('/login');
+    
+    // Redirect based on user type
+    if (formData.userType === 'Tenant') {
+      navigate('/tenant-dashboard');
+    } else {
+      navigate('/owner-dashboard');
+    }
   };
 
   return (

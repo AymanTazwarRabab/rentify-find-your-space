@@ -31,6 +31,14 @@ const Login = () => {
     'Office Space'
   ];
 
+  const budgetRanges = [
+    '0 - 5000 ৳',
+    '5000 - 10000 ৳',
+    '10000 - 20000 ৳',
+    '20000 - 30000 ৳',
+    '30000+ ৳'
+  ];
+
   const handleServiceToggle = (service: string) => {
     setSelectedServices(prev => 
       prev.includes(service) 
@@ -51,7 +59,13 @@ const Login = () => {
       propertyType, 
       budget 
     });
-    navigate('/dashboard');
+    
+    // Redirect based on account type
+    if (accountType === 'tenant') {
+      navigate('/tenant-dashboard');
+    } else {
+      navigate('/owner-dashboard');
+    }
   };
 
   return (
@@ -192,11 +206,9 @@ const Login = () => {
                     className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition-all duration-200"
                   >
                     <option value="">Select budget range</option>
-                    <option value="0-500">$0 - $500</option>
-                    <option value="500-1000">$500 - $1,000</option>
-                    <option value="1000-1500">$1,000 - $1,500</option>
-                    <option value="1500-2000">$1,500 - $2,000</option>
-                    <option value="2000+">$2,000+</option>
+                    {budgetRanges.map((range) => (
+                      <option key={range} value={range}>{range}</option>
+                    ))}
                   </select>
                 </div>
               </>
