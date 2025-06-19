@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import { toast } from 'sonner';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -9,30 +11,63 @@ const Register = () => {
     email: '',
     location: '',
     userType: 'Tenant',
-    otp: ''
+    password: '',
+    confirmPassword: ''
   });
-  const [otpSent, setOtpSent] = useState(false);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { signUp } = useAuth();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleGetOTP = () => {
-    setOtpSent(true);
-    console.log('OTP sent to:', formData.email);
-  };
-
-  const handleRegister = (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Registration data:', formData);
     
-    // Redirect based on user type
-    if (formData.userType === 'Tenant') {
-      navigate('/tenant-dashboard');
-    } else {
-      navigate('/owner-dashboard');
+    if (formData.password !== formData.confirmPassword) {
+      toast.error('Passwords do not match');
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      toast.error('Password must be at least 6 characters long');
+      return;
+    }
+
+    setLoading(true);
+    
+    try {
+      const userData = {
+        name: formData.name,
+        phone: formData.number,
+        location: formData.location,
+        user_type: formData.userType
+      };
+
+      const { data, error } = await signUp(formData.email, formData.password, userData);
+      
+      if (error) {
+        toast.error(error.message);
+        return;
+      }
+
+      if (data.user) {
+        toast.success('Account created successfully!');
+        
+        // Redirect based on user type
+        if (formData.userType === 'Tenant') {
+          navigate('/tenant-dashboard');
+        } else {
+          navigate('/owner-dashboard');
+        }
+      }
+    } catch (error: any) {
+      toast.error('Registration failed. Please try again.');
+      console.error('Registration error:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -81,6 +116,32 @@ const Register = () => {
             
             <div>
               <input
+                type="password"
+                name="password"
+                placeholder="ENTER YOUR PASSWORD"
+                value={formData.password}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
+                required
+                minLength={6}
+              />
+            </div>
+            
+            <div>
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder="CONFIRM YOUR PASSWORD"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
+                required
+                minLength={6}
+              />
+            </div>
+            
+            <div>
+              <input
                 type="text"
                 name="location"
                 placeholder="YOUR LOCATION"
@@ -124,33 +185,13 @@ const Register = () => {
               </div>
             </div>
             
-            {!otpSent ? (
-              <button
-                type="button"
-                onClick={handleGetOTP}
-                className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover-lift"
-              >
-                Get OTP
-              </button>
-            ) : (
-              <div className="space-y-4">
-                <input
-                  type="text"
-                  name="otp"
-                  placeholder="Paste your OTP"
-                  value={formData.otp}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover-lift"
-                >
-                  Register
-                </button>
-              </div>
-            )}
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover-lift disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {loading ? 'Creating Account...' : 'Register'}
+            </button>
           </form>
           
           <p className="text-center text-sm text-gray-600 mt-6">

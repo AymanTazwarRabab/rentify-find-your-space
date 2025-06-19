@@ -1,59 +1,65 @@
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Search, MapPin, Home, Users, DollarSign } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
+import { supabase } from '@/integrations/supabase/client';
+import { useNavigate } from 'react-router-dom';
 import PropertyCard from '../components/PropertyCard';
 
+interface Property {
+  id: string;
+  type: string;
+  location: string;
+  rooms: string | null;
+  rent: number;
+  measurement: string | null;
+  description: string | null;
+  is_available: boolean;
+}
+
 const TenantDashboard = () => {
+  const { user, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('all');
   const [selectedLocation, setSelectedLocation] = useState('');
   const [budgetRange, setBudgetRange] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const properties = [
-    {
-      type: "FAMILY HOUSE",
-      location: "MIRPUR - 12",
-      rooms: "02",
-      rent: "12000 ৳",
-      bgColor: "bg-gradient-to-r from-teal-500 to-cyan-500"
-    },
-    {
-      type: "BACHELOR HOUSE",
-      location: "MIRPUR PALLABI",
-      rooms: "03",
-      rent: "8000 ৳",
-      bgColor: "bg-gradient-to-r from-teal-500 to-cyan-500"
-    },
-    {
-      type: "COMMERCIAL SPACE",
-      location: "MIRPUR - 12",
-      rooms: "",
-      rent: "50000 ৳",
-      measurement: "3000 SQ FT",
-      bgColor: "bg-gradient-to-r from-teal-500 to-cyan-500"
-    },
-    {
-      type: "ROOMMATE REQUIRED",
-      location: "DHANMONDI",
-      rooms: "01",
-      rent: "6000 ৳",
-      bgColor: "bg-gradient-to-r from-teal-500 to-cyan-500"
-    },
-    {
-      type: "BACHELOR APARTMENT",
-      location: "GULSHAN",
-      rooms: "02",
-      rent: "15000 ৳",
-      bgColor: "bg-gradient-to-r from-teal-500 to-cyan-500"
-    },
-    {
-      type: "FAMILY HOUSE",
-      location: "UTTARA",
-      rooms: "04",
-      rent: "25000 ৳",
-      bgColor: "bg-gradient-to-r from-teal-500 to-cyan-500"
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!authLoading && !user) {
+      navigate('/login');
     }
-  ];
+  }, [user, authLoading, navigate]);
+
+  // Fetch properties from database
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('properties')
+          .select('*')
+          .eq('is_available', true)
+          .order('created_at', { ascending: false });
+
+        if (error) {
+          console.error('Error fetching properties:', error);
+          return;
+        }
+
+        setProperties(data || []);
+      } catch (error) {
+        console.error('Error fetching properties:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (user) {
+      fetchProperties();
+    }
+  }, [user]);
 
   const categories = [
     { id: 'all', label: 'All Properties', icon: Home },
@@ -65,11 +71,7 @@ const TenantDashboard = () => {
 
   const locations = [
     'All Locations',
-    'MIRPUR - 12',
-    'MIRPUR PALLABI',
-    'DHANMONDI',
-    'GULSHAN',
-    'UTTARA'
+    ...Array.from(new Set(properties.map(p => p.location))).sort()
   ];
 
   const budgetRanges = [
@@ -89,8 +91,37 @@ const TenantDashboard = () => {
       property.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
       property.location.toLowerCase().includes(searchTerm.toLowerCase());
     
-    return matchesCategory && matchesLocation && matchesSearch;
+    let matchesBudget = true;
+    if (budgetRange && budgetRange !== 'All Budgets') {
+      const rent = property.rent;
+      switch (budgetRange) {
+        case '0 - 10000 ৳':
+          matchesBudget = rent <= 10000;
+          break;
+        case '10000 - 20000 ৳':
+          matchesBudget = rent > 10000 && rent <= 20000;
+          break;
+        case '20000 - 30000 ৳':
+          matchesBudget = rent > 20000 && rent <= 30000;
+          break;
+        case '30000+ ৳':
+          matchesBudget = rent > 30000;
+          break;
+      }
+    }
+    
+    return matchesCategory && matchesLocation && matchesSearch && matchesBudget;
   });
+
+  if (authLoading || loading) {
+    return (
+      <div className="page-container">
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="text-2xl font-bold text-teal-600">Loading...</div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="page-container">
@@ -190,17 +221,17 @@ const TenantDashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProperties.map((property, index) => (
               <div 
-                key={index} 
+                key={property.id} 
                 className="animate-scale-in"
                 style={{animationDelay: `${index * 0.1}s`}}
               >
                 <PropertyCard
                   type={property.type}
                   location={property.location}
-                  rooms={property.rooms}
-                  rent={property.rent}
+                  rooms={property.rooms || ''}
+                  rent={`${property.rent} ৳`}
                   measurement={property.measurement}
-                  bgColor={property.bgColor}
+                  bgColor="bg-gradient-to-r from-teal-500 to-cyan-500"
                 />
               </div>
             ))}
