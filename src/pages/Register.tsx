@@ -1,8 +1,6 @@
 
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import { toast } from 'sonner';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,107 +9,25 @@ const Register = () => {
     email: '',
     location: '',
     userType: 'Tenant',
-    password: '',
-    confirmPassword: ''
+    otp: ''
   });
-  const [loading, setLoading] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
   const navigate = useNavigate();
-  const { signUp } = useAuth();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const handleGetOTP = () => {
+    setOtpSent(true);
+    console.log('OTP sent to:', formData.email);
   };
 
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Enhanced validation
-    if (!validateEmail(formData.email)) {
-      toast.error('Please enter a valid email address');
-      return;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      toast.error('Passwords do not match');
-      return;
-    }
-
-    if (formData.password.length < 6) {
-      toast.error('Password must be at least 6 characters long');
-      return;
-    }
-
-    if (!formData.name.trim()) {
-      toast.error('Name is required');
-      return;
-    }
-
-    if (!formData.number.trim()) {
-      toast.error('Phone number is required');
-      return;
-    }
-
-    if (!formData.location.trim()) {
-      toast.error('Location is required');
-      return;
-    }
-
-    setLoading(true);
-    
-    try {
-      const userData = {
-        name: formData.name.trim(),
-        phone: formData.number.trim(),
-        location: formData.location.trim(),
-        user_type: formData.userType
-      };
-
-      console.log('Attempting to register with:', { 
-        email: formData.email, 
-        userData 
-      });
-
-      const { data, error } = await signUp(formData.email.trim(), formData.password, userData);
-      
-      if (error) {
-        console.error('Registration error:', error);
-        
-        // Handle specific error messages
-        if (error.message.includes('email_address_invalid')) {
-          toast.error('Please enter a valid email address');
-        } else if (error.message.includes('weak_password')) {
-          toast.error('Password is too weak. Please use a stronger password.');
-        } else if (error.message.includes('user_already_exists')) {
-          toast.error('An account with this email already exists');
-        } else {
-          toast.error(error.message);
-        }
-        return;
-      }
-
-      if (data.user) {
-        toast.success('Account created successfully! Please check your email for verification.');
-        
-        // Store the selected user type for later use during login
-        localStorage.setItem('pendingUserType', formData.userType);
-        
-        // Don't redirect immediately, let user verify email first
-        // Instead, show a message about email verification
-        toast.info('Please verify your email before logging in');
-        navigate('/login');
-      }
-    } catch (error: any) {
-      console.error('Registration error:', error);
-      toast.error('Registration failed. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+    console.log('Registration data:', formData);
+    navigate('/login');
   };
 
   return (
@@ -154,32 +70,6 @@ const Register = () => {
                 onChange={handleInputChange}
                 className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
                 required
-              />
-            </div>
-            
-            <div>
-              <input
-                type="password"
-                name="password"
-                placeholder="ENTER YOUR PASSWORD"
-                value={formData.password}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
-                required
-                minLength={6}
-              />
-            </div>
-            
-            <div>
-              <input
-                type="password"
-                name="confirmPassword"
-                placeholder="CONFIRM YOUR PASSWORD"
-                value={formData.confirmPassword}
-                onChange={handleInputChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
-                required
-                minLength={6}
               />
             </div>
             
@@ -228,13 +118,33 @@ const Register = () => {
               </div>
             </div>
             
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover-lift disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? 'Creating Account...' : 'Register'}
-            </button>
+            {!otpSent ? (
+              <button
+                type="button"
+                onClick={handleGetOTP}
+                className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover-lift"
+              >
+                Get OTP
+              </button>
+            ) : (
+              <div className="space-y-4">
+                <input
+                  type="text"
+                  name="otp"
+                  placeholder="Paste your OTP"
+                  value={formData.otp}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
+                  required
+                />
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 text-white py-3 rounded-full font-semibold hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 shadow-lg hover-lift"
+                >
+                  Register
+                </button>
+              </div>
+            )}
           </form>
           
           <p className="text-center text-sm text-gray-600 mt-6">
